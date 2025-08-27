@@ -15,12 +15,12 @@ layout:
     visible: true
 ---
 
-# Richpay APIs Documentation
+# Zenospay APIs Documentation
 
 #### What’s Inside:
 
-* API specifications
-* Example requests & responses
-* Error handling
+- API specifications
+- Example requests & responses
+- Error handling
 
 Get started quickly and integrate seamlessly! 🚀
