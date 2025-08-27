@@ -97,7 +97,7 @@ The callback is triggered only after the user **completes the payment**.
   "service_fee_rate": 0,
   "service_fee_amount": 0,
   "nett_amount": 10000,
-  "rrn": "987654321",
+  "rrn": "0392813042",
   "customer_info": {
        "customer_name": "John Doe",
        "product_name": "Deposit Now"

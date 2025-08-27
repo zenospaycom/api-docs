@@ -15,4 +15,4 @@ layout:
 
 # Payout
 
-The **Payout API** enables merchants to initiate payout requests, transfer funds, and check available balances.&#x20;
+The **Payout API** enables merchants to initiate payout requests, transfer funds, and check available balances.

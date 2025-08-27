@@ -2,6 +2,7 @@
 description: >-
   This API allows merchants to generate a checkout page for transaction
   processing.
+hidden: true
 icon: vr-cardboard
 layout:
   title:
@@ -22,7 +23,7 @@ layout:
 
 **Request**
 
-<table><thead><tr><th width="212.08984375">Name</th><th width="80.859375">Type</th><th data-type="checkbox">Required</th><th>Validation</th><th width="185.125">Description</th></tr></thead><tbody><tr><td>merchant_transaction_id</td><td>string</td><td>true</td><td></td><td>Unique identifier for the merchant's transaction.</td></tr><tr><td>amount</td><td>string</td><td>true</td><td>Numeric, 1-12 digits</td><td>The transaction amount in numeric format.</td></tr><tr><td>currency</td><td>string</td><td>true</td><td><strong>Allowed value:</strong> <code>"IDR"</code></td><td>The currency for the transaction (Indonesian Rupiah only).</td></tr><tr><td>bank_code</td><td>string</td><td>true</td><td>Allowed value: PRMT, CIMB, MDR, BNI, BRI</td><td>The bank code for the transaction</td></tr><tr><td>customer_name</td><td>string</td><td>true</td><td><p>Between 5 - 25 characters</p><p>Allowed chars: a-z, A-Z, 0-9, - (dash),(space)</p></td><td>Name of the customer associated with the transaction.</td></tr><tr><td>product_name</td><td>string</td><td>true</td><td><p>Between 5 - 25 characters</p><p>Allowed chars: a-z, A-Z, 0-9, - (dash),(space)</p></td><td>Name of the product associated with the transaction.</td></tr><tr><td>description</td><td>string</td><td>false</td><td></td><td>Additional details about the transaction.</td></tr></tbody></table>
+<table><thead><tr><th width="212.08984375">Name</th><th width="80.859375">Type</th><th data-type="checkbox">Required</th><th>Validation</th><th width="185.125">Description</th></tr></thead><tbody><tr><td>merchant_transaction_id</td><td>string</td><td>true</td><td></td><td>Unique identifier for the merchant's transaction.</td></tr><tr><td>amount</td><td>string</td><td>true</td><td>Numeric, 1-12 digits</td><td>The transaction amount in numeric format.</td></tr><tr><td>currency</td><td>string</td><td>true</td><td><strong>Allowed value:</strong> <code>"IDR"</code></td><td>The currency for the transaction (Indonesian Rupiah only).</td></tr><tr><td>bank_code</td><td>string</td><td>true</td><td>Allowed value: NOBU</td><td>The bank code for the transaction</td></tr><tr><td>customer_name</td><td>string</td><td>true</td><td><p>Between 5 - 25 characters</p><p>Allowed chars: a-z, A-Z, 0-9, - (dash),(space)</p></td><td>Name of the customer associated with the transaction.</td></tr><tr><td>product_name</td><td>string</td><td>true</td><td><p>Between 5 - 25 characters</p><p>Allowed chars: a-z, A-Z, 0-9, - (dash),(space)</p></td><td>Name of the product associated with the transaction.</td></tr><tr><td>description</td><td>string</td><td>false</td><td></td><td>Additional details about the transaction.</td></tr></tbody></table>
 
 {% tabs %}
 {% tab title="Example Payload" %}

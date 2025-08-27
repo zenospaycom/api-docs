@@ -15,9 +15,13 @@ layout:
 
 # Checkout
 
-The **Checkout API** provides two types of checkout processes:
+Our Checkout API provides a seamless invoice-based payment process, allowing customers to complete transactions securely.
 
-1. **Checkout Invoice** – Generates an invoice for the customer to complete the payment.
-2. **Checkout Bank Invoice** – Generates an invoice with bank-specific payment instructions.
+**Key Features:**
 
-Both options allow merchants to create and manage payment transactions securely.
+* **Instant Invoice Generation** – Automatically creates a detailed invoice for each transaction.
+* **Flexible Payment Options** – Customers can pay using their preferred method (e.g., credit/debit, bank transfer, or other supported options).
+* **Secure Processing** – All transactions are encrypted and handled with compliance to industry security standards.
+* **Payment Tracking** – Merchants and customers can monitor payment status in real time.
+
+Merchants can manage and reconcile transactions effortlessly through the API.
