@@ -2,6 +2,7 @@
 description: >-
   This API allows merchants to generate a checkout page for transaction
   processing
+icon: vr-cardboard
 ---
 
 # Virtual Account
