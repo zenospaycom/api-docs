@@ -5,11 +5,18 @@ icon: file-invoice-dollar
 
 # Checkout Bank Invoice
 
-<mark style="color:green;">`POST`</mark> `/api/checkout/bank`
+`POST` `/api/checkout/bank`
 
 **Request**
 
-<table><thead><tr><th width="220.125">Name</th><th width="72.45703125">Type</th><th width="107.74609375" data-type="checkbox">Required</th><th>Validation</th><th width="185.125">Description</th></tr></thead><tbody><tr><td>merchant_transaction_id</td><td>string</td><td>true</td><td></td><td>Unique identifier for the merchant's transaction.</td></tr><tr><td>amount</td><td>string</td><td>true</td><td>Numeric, 1-12 digits</td><td>The transaction amount in numeric format.</td></tr><tr><td>currency</td><td>string</td><td>true</td><td><strong>Allowed value:</strong> <code>"IDR"</code></td><td>The currency for the transaction (Indonesian Rupiah only).</td></tr><tr><td>customer_name</td><td>string</td><td>true</td><td>5-25 characters, Allowed: <code>a-z A-Z 0-9 - (space)</code></td><td>Name of the customer associated with the transaction.</td></tr><tr><td>product_name</td><td>string</td><td>true</td><td>5-25 characters, Allowed: <code>a-z A-Z 0-9 - (space)</code></td><td>Name of the product associated with the transaction.</td></tr><tr><td>description</td><td>string</td><td>false</td><td></td><td>Additional details about the transaction.</td></tr></tbody></table>
+| Name                      |   Type | Required | Validation                                        | Description                                                |
+| ------------------------- | -----: | :------: | ------------------------------------------------- | ---------------------------------------------------------- |
+| merchant\_transaction\_id | string |   true   |                                                   | Unique identifier for the merchant's transaction.          |
+| amount                    | string |   true   | Numeric, 1-12 digits                              | The transaction amount in numeric format.                  |
+| currency                  | string |   true   | **Allowed value:** `"IDR"`                        | The currency for the transaction (Indonesian Rupiah only). |
+| customer\_name            | string |   true   | 5-25 characters, Allowed: `a-z A-Z 0-9 - (space)` | Name of the customer associated with the transaction.      |
+| product\_name             | string |   true   | 5-25 characters, Allowed: `a-z A-Z 0-9 - (space)` | Name of the product associated with the transaction.       |
+| description               | string |   false  |                                                   | Additional details about the transaction.                  |
 
 {% tabs %}
 {% tab title="Example Payload" %}
@@ -30,7 +37,17 @@ icon: file-invoice-dollar
 
 **Response**
 
-<table><thead><tr><th width="329.98828125">Name</th><th>Description</th></tr></thead><tbody><tr><td>transaction_id</td><td>The unique identifier for the transaction provided by the merchant.</td></tr><tr><td>client_id</td><td>The requestor client id</td></tr><tr><td>amount</td><td>The numeric value of the transaction amount.</td></tr><tr><td>currency</td><td>The currency used for the transaction. Only IDR is supported.</td></tr><tr><td>description</td><td>The description that describes the transaction.</td></tr><tr><td>customer_details</td><td>The customer details involved in the transaction.</td></tr><tr><td>customer_details.customer_name</td><td>The customer name involved in the transaction</td></tr><tr><td>customer_details.product_name</td><td>The product name involved in the transaction</td></tr><tr><td>checkout_url</td><td>A web URL for redirecting users to complete the payment via a web browser.</td></tr></tbody></table>
+| Name                             | Description                                                                |
+| -------------------------------- | -------------------------------------------------------------------------- |
+| transaction\_id                  | The unique identifier for the transaction provided by the merchant.        |
+| client\_id                       | The requestor client id                                                    |
+| amount                           | The numeric value of the transaction amount.                               |
+| currency                         | The currency used for the transaction. Only IDR is supported.              |
+| description                      | The description that describes the transaction.                            |
+| customer\_details                | The customer details involved in the transaction.                          |
+| customer\_details.customer\_name | The customer name involved in the transaction                              |
+| customer\_details.product\_name  | The product name involved in the transaction                               |
+| checkout\_url                    | A web URL for redirecting users to complete the payment via a web browser. |
 
 {% tabs %}
 {% tab title="Success" %}
@@ -58,9 +75,23 @@ To receive a callback, you must first **register** your domain URL.
 The callback is triggered only after the user **completes the payment**.
 {% endhint %}
 
-<mark style="color:green;">`POST`</mark> `{your_callback_url}`
+`POST` `{your_callback_url}`
 
-<table><thead><tr><th width="269.14453125">Name</th><th>Description</th></tr></thead><tbody><tr><td>transaction_id</td><td>Unique identifier for the transaction.</td></tr><tr><td>merchant_transaction_id</td><td>Unique identifier provided by the client for the merchant</td></tr><tr><td>created_at</td><td>Timestamp when the transaction was created.</td></tr><tr><td>amount</td><td>Total transaction amount.</td></tr><tr><td>currency</td><td>Currency used in the transaction (e.g., IDR, USD).</td></tr><tr><td>channel</td><td>Payment channel used (e.g., BCA, QRIS).</td></tr><tr><td>service_fee_rate</td><td>Service fee percentage applied (e.g., 2.5, 3.0).</td></tr><tr><td>service_fee_amount</td><td>Total service fee deducted (e.g., 2000, 4000).</td></tr><tr><td>nett_amount</td><td>Final amount received after fee deductions.</td></tr><tr><td>rrn</td><td>RRN (Retrieval Reference Number) of the associated payment transaction.</td></tr><tr><td>customer_info</td><td>Additional customer details.</td></tr><tr><td>customer_info.customer_name</td><td>Customer's name.</td></tr><tr><td>customer_info.product_name</td><td>Product name associated with the transaction.</td></tr></tbody></table>
+| Name                          | Description                                                             |
+| ----------------------------- | ----------------------------------------------------------------------- |
+| transaction\_id               | Unique identifier for the transaction.                                  |
+| merchant\_transaction\_id     | Unique identifier provided by the client for the merchant               |
+| created\_at                   | Timestamp when the transaction was created.                             |
+| amount                        | Total transaction amount.                                               |
+| currency                      | Currency used in the transaction (e.g., IDR, USD).                      |
+| channel                       | Payment channel used (e.g., BCA, QRIS).                                 |
+| service\_fee\_rate            | Service fee percentage applied (e.g., 2.5, 3.0).                        |
+| service\_fee\_amount          | Total service fee deducted (e.g., 2000, 4000).                          |
+| nett\_amount                  | Final amount received after fee deductions.                             |
+| rrn                           | RRN (Retrieval Reference Number) of the associated payment transaction. |
+| customer\_info                | Additional customer details.                                            |
+| customer\_info.customer\_name | Customer's name.                                                        |
+| customer\_info.product\_name  | Product name associated with the transaction.                           |
 
 {% tabs %}
 {% tab title="Example Payload" %}
@@ -81,7 +112,6 @@ The callback is triggered only after the user **completes the payment**.
        "product_name": "Deposit Now"
   }
 }
-
 ```
 {% endtab %}
 {% endtabs %}

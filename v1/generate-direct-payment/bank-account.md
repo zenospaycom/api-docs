@@ -1,21 +1,22 @@
 ---
 description: >-
   This API allows merchants to generate a checkout page for transaction
-  processing
+  processing.
+icon: building-columns
 ---
 
-# Virtual Account
+# Bank Account
 
-`POST` `/api/create/va`
+`POST` `/api/create/bank`
 
-## Request
+**Request**
 
 | Name                      |   Type | Required | Validation                                                                 | Description                                                |
 | ------------------------- | -----: | :------: | -------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | merchant\_transaction\_id | string |   true   |                                                                            | Unique identifier for the merchant's transaction.          |
 | amount                    | string |   true   | Numeric, 1-12 digits                                                       | The transaction amount in numeric format.                  |
 | currency                  | string |   true   | **Allowed value:** `"IDR"`                                                 | The currency for the transaction (Indonesian Rupiah only). |
-| bank\_code                | string |   true   | Allowed value: PRMT, CIMB, MDR, BNI, BRI                                   | The bank code for the transaction                          |
+| bank\_code                | string |   true   | Allowed value: BCA, MDR, BNI, BRI                                          | The bank code for the transaction                          |
 | customer\_name            | string |   true   | Between 5 - 25 characters. Allowed chars: a-z, A-Z, 0-9, - (dash), (space) | Name of the customer associated with the transaction.      |
 | product\_name             | string |   true   | Between 5 - 25 characters. Allowed chars: a-z, A-Z, 0-9, - (dash), (space) | Name of the product associated with the transaction.       |
 | description               | string |   false  |                                                                            | Additional details about the transaction.                  |
@@ -27,7 +28,7 @@ description: >-
     "merchant_transaction_id": "ICZ10000001",
     "amount": "100000",
     "currency": "IDR",
-    "bank_code": "BRI",
+    "bank_code": "BCA",
     "description": "Lorem Ipsum",
     "customer_name": "John Doe",
     "product_name": "Product Test"
@@ -38,15 +39,17 @@ description: >-
 
 ***
 
-## Response
+**Response**
 
-| Name               | Description                                                                                                                                                           |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| status             | Indicates the status of the request. **true** if successful, **false** otherwise.                                                                                     |
-| message            | A message describing the result of the request. Typically "success" if the request was successful.                                                                    |
-| data.va\_number    | The generated Virtual Account (VA) number. This number is used by the customer to make the payment. This field may be empty if no virtual account number is provided. |
-| data.channel       | The bank or payment channel associated with the Virtual Account.                                                                                                      |
-| data.redirect\_url | A URL to which the user should be redirected (if applicable). This field may be **null** if no redirect URL is provided.                                              |
+| Name                 | Description                                                                                                              |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| status               | Indicates the status of the request. **true** if successful, **false** otherwise.                                        |
+| message              | A message describing the result of the request. Typically "success" if the request was successful.                       |
+| data.account\_number | The generated bank account number. This number is used by the customer to make the payment.                              |
+| data.account\_name   | The name of the account holder.                                                                                          |
+| data.amount          | The total amount the user must transfer.                                                                                 |
+| data.channel         | The bank or payment channel associated with the Bank Account Payment                                                     |
+| data.redirect\_url   | A URL to which the user should be redirected (if applicable). This field may be **null** if no redirect URL is provided. |
 
 {% tabs %}
 {% tab title="Success" %}
@@ -55,9 +58,11 @@ description: >-
     "status": true,
     "message": "success",
     "data": {
-        "va_number": "8999817535253527",
-        "channel": "MDR",
-        "redirect_url": "{host}/checkout/9e536777-2bfa-4161-9931-35f5c4b23faf/va/MDR"
+        "account_number": "4871002066",
+        "account_name": "John Doe",
+        "amount": 100089,
+        "channel": "BANK_BCA",
+        "redirect_url": "{host}/checkout/9e536777-2bfa-4161-9931-35f5c4b23faf/bank/BCA"
     }
 }
 ```
@@ -67,7 +72,7 @@ description: >-
 ```json
 {
     "status": false,
-    "message": "string"
+    "message": string
 }
 ```
 {% endtab %}
@@ -75,7 +80,7 @@ description: >-
 
 ***
 
-## Callback
+**Callback**
 
 {% hint style="warning" %}
 To receive a callback, you must first **register** your domain URL.
