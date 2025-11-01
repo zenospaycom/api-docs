@@ -20,4 +20,7 @@
   * [Inquiry](v1/payout/inquiry.md)
   * [Transfer fund](v1/payout/transfer-fund.md)
   * [Check Balance](v1/payout/check-balance.md)
+* [Webhook](v1/webhook/README.md)
+  * [Payment Completed Webhook](v1/webhook/payment-completed-webhook.md)
+  * [Disbursement Completed Webhook](v1/webhook/disbursement-completed-webhook.md)
 * [Apendix](v1/apendix.md)
