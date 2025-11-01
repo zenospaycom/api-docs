@@ -1,7 +1,4 @@
 ---
-description: >-
-  To receive a callback, you must first register your domain URL.  The callback
-  is triggered only after the user completes the payment.
 icon: anchor-circle-check
 ---
 
@@ -10,10 +7,10 @@ icon: anchor-circle-check
 {% hint style="warning" %}
 To receive a callback, you must first **register** your domain URL.
 
-The callback is triggered only after the user **completes the payment**.
+The callback is triggered only after the user **completes the payment**. &#x20;
 {% endhint %}
 
-<mark style="color:green;">`POST`</mark>`payment.completed`   &#x20;
+<mark style="color:green;">POST</mark> `payment.completed`
 
 **Payload Structure**
 
