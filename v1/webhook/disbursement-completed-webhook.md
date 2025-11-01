@@ -4,7 +4,7 @@ icon: anchor-circle-check
 
 # Disbursement Completed Webhook
 
-Event Type: `disbursement.completed`
+<mark style="color:green;">`POST`</mark> `disbursement.completed`
 
 **Payload Structure**
 

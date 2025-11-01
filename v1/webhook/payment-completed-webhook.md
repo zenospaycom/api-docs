@@ -1,10 +1,19 @@
 ---
+description: >-
+  To receive a callback, you must first register your domain URL.  The callback
+  is triggered only after the user completes the payment.
 icon: anchor-circle-check
 ---
 
 # Payment Completed Webhook
 
-Event `payment.completed`
+{% hint style="warning" %}
+To receive a callback, you must first **register** your domain URL.
+
+The callback is triggered only after the user **completes the payment**.
+{% endhint %}
+
+<mark style="color:green;">`POST`</mark>`payment.completed`   &#x20;
 
 **Payload Structure**
 
